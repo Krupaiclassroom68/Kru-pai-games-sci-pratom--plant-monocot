@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>แบบทดสอบ: พืชใบเลี้ยงเดี่ยว / ใบเลี้ยงคู่ (30 ข้อ) • ผสมเดี่ยว/คู่ไม่ให้ติดกัน</title>
+  <style>
+    :root{ --primary:#16a34a; --primary-dark:#15803d; --bg:#f0fdf4; --card:#ffffff; --text:#0b1420; --muted:#64748b; --ok:#16a34a; --bad:#dc2626; --barbg:#bbf7d0; --chip:#dcfce7; --chip2:#fee2e2; }
+    *{box-sizing:border-box} html,body{height:100%}
+    body{margin:0; font-family:"Noto Sans Thai", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; background: var(--bg); color:var(--text); line-height:1.6;}
+    .brandbar{width:100%; background:linear-gradient(90deg,var(--primary) 0%, var(--primary-dark) 100%); color:#fff; padding:10px 16px; display:flex; align-items:center; justify-content:center; position:sticky; top:0; z-index:10; box-shadow:0 6px 18px rgba(21,128,61,.25);}
+    .brandbar .logo{font-weight:900; display:flex; align-items:center; gap:8px; font-size:18px}
+    .container{max-width:900px; margin:22px auto 80px; padding:0 16px}
+    .card{background:var(--card); border:2px solid #bbf7d0; border-radius:24px; box-shadow:0 14px 36px rgba(21,128,61,.12); overflow:hidden;}
+    .card-head{padding:20px 22px; border-bottom:1px solid #e2e8f0; display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap}
+    .title{font-size:22px; font-weight:900; color:var(--primary-dark)}
+    .subtitle{font-size:14px; color:var(--muted)}
+    .card-body{padding:22px}
+    .start{display:grid; gap:16px; justify-items:center; text-align:center; padding:28px 18px 36px}
+    .input-row{display:flex; gap:10px; width:100%; max-width:520px}
+    input[type="text"]{flex:1; padding:12px 14px; border:1.5px solid #e2e8f0; border-radius:14px; font-size:16px; outline:none; background:#ffffff}
+    input[type="text"]:focus{border-color:var(--primary)}
+    .btn{appearance:none; border:none; background:var(--primary); color:#fff; padding:12px 18px; border-radius:14px; font-weight:900; font-size:16px; cursor:pointer; transition:.15s transform ease, .2s background ease, .2s box-shadow ease; box-shadow:0 8px 22px rgba(21,128,61,.25);}
+    .btn:hover{background:var(--primary-dark); transform:translateY(-1px)}
+    .btn-outline{background:#fff; color:var(--primary); border:2px solid var(--primary); box-shadow:none}
+    .btn-accent{background:#22c55e; color:#fff}
+    .meta{display:flex; gap:10px; align-items:center; color:var(--muted); font-size:14px}
+    .dot{width:6px; height:6px; background:var(--muted); border-radius:50%}
+    .progress-wrap{width:100%; background:var(--barbg); height:10px; border-radius:999px; overflow:hidden}
+    .progress{height:100%; width:0%; background:var(--primary); transition:width .25s ease}
+    .pill{display:inline-flex; align-items:center; gap:8px; border:1px solid #bbf7d0; background:#f0fdf4; color:#065f46; padding:6px 10px; border-radius:999px; font-weight:800; font-size:14px}
+    .qtext{font-size:20px; font-weight:800; margin:10px 0 14px}
+    .options{display:grid; gap:10px; margin:10px 0 6px}
+    .opt{border:1.5px solid #e2e8f0; background:#ffffff; border-radius:16px; padding:12px 14px; display:flex; align-items:center; gap:10px; cursor:pointer; transition:border .15s ease, background .15s ease}
+    .opt:hover{border-color:var(--primary)}
+    .opt input{appearance:none; width:22px; height:22px; border:2px solid var(--primary); border-radius:50%; position:relative; flex:0 0 22px; background:#fff}
+    .opt input:checked{background:var(--primary)}
+    .opt input:checked::after{content:""; position:absolute; inset:5px; background:#fff; border-radius:50%}
+    .opt .letter{font-weight:900; color:var(--primary); min-width:28px}
+    .nav-row{display:flex; justify-content:space-between; gap:10px; margin-top:16px; flex-wrap:wrap}
+    .center{display:flex; justify-content:center}
+    .hidden{display:none !important}
+    .score-big{font-size:40px; font-weight:900; color:var(--primary-dark); margin:6px 0 2px; text-align:center}
+    .muted{color:var(--muted)}
+    .result-list{display:grid; gap:14px; margin-top:16px}
+    .result-item{border:1px solid #e2e8f0; border-left:6px solid var(--bad); border-radius:16px; padding:12px 14px; background:#fff}
+    .result-item.ok{border-left-color:var(--ok)}
+    .item-head{display:flex; justify-content:space-between; gap:8px; align-items:center; flex-wrap:wrap}
+    .answer-line{font-size:14px; margin-top:4px}
+    .explain{font-size:14px; color:#334155; margin-top:6px}
+    .grid-know{display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:10px; margin-top:14px}
+    .chip{padding:8px 10px; border-radius:12px; border:1px solid #e5e7eb; background:#dcfce7; font-size:14px; font-weight:700; display:flex; justify-content:space-between; align-items:center}
+    .chip.dico{background:#fee2e2; color:#991b1b}
+    .footer-brand{text-align:center; color:var(--muted); font-size:13px; padding:14px 8px}
+    @media (max-width:520px){ .title{font-size:19px} .qtext{font-size:18px} .btn{width:100%} }
+  </style>
+</head>
+<body>
+  <div class="brandbar"><div class="logo">🌿 <span>Kru Pai Classroom</span></div></div>
+  <div class="container">
+    <div class="card" id="card">
+      <div class="card-head">
+        <div>
+          <div class="title">แบบทดสอบ: จำแนกลักษณะพืชใบเลี้ยงเดี่ยว/คู่</div>
+          <div class="subtitle">30 ข้อ • ผสม “เดี่ยว/คู่” ไม่ให้เรียงรวด • ตรวจทีเดียว + เฉลยพร้อมเหตุผล</div>
+        </div>
+        <div class="meta">
+          <span id="playerNameMeta" class="hidden"></span>
+          <span class="dot"></span>
+          <span id="progressMeta">ข้อ <span id="qIndexMeta">0</span>/<span id="qTotalMeta">0</span></span>
+        </div>
+      </div>
+      <div class="card-body">
+        <section id="screen-start" class="start">
+          <h2 style="margin:0; font-size:24px; font-weight:900; color:var(--primary-dark)">พร้อมสำรวจโลกของพืชกันไหม? 🌱🌸</h2>
+          <p class="muted" style="margin:0 0 8px">กรอกชื่อเล่น แล้วกดเริ่มเพื่อทำแบบทดสอบทีละข้อ (มีเฉลยพร้อมคำอธิบายตอนจบ)</p>
+          <div class="input-row">
+            <input type="text" id="playerName" placeholder="พิมพ์ชื่อเล่นของคุณ" />
+            <button class="btn btn-accent" id="btnStart">เริ่มทำแบบทดสอบ</button>
+          </div>
+          <div class="footer-brand">© Kru Pai Classroom — อยู่กับคุณทุกหน้า 🌿</div>
+        </section>
+
+        <section id="screen-quiz" class="hidden">
+          <div class="progress-wrap" aria-hidden="true"><div class="progress" id="progressBar"></div></div>
+          <div id="qWrap" style="margin-top:16px">
+            <div class="pill" id="pillIdx">ข้อ 1/30</div>
+            <div class="qtext" id="qText">...</div>
+            <div class="options" id="optWrap"></div>
+          </div>
+
+          <div class="nav-row">
+            <button class="btn btn-outline" id="btnPrev">⬅ กลับข้อก่อนหน้า</button>
+            <div style="display:flex; gap:10px">
+              <button class="btn btn-outline" id="btnSave">บันทึกคำตอบ</button>
+              <button class="btn" id="btnNext">ข้อต่อไป ➡</button>
+            </div>
+          </div>
+
+          <div class="center" style="margin-top:12px">
+            <button class="btn btn-accent hidden" id="btnFinish">ทำครบแล้ว • ตรวจคำตอบ</button>
+          </div>
+          <div class="footer-brand">© Kru Pai Classroom — อยู่กับคุณทุกหน้า 🌿</div>
+        </section>
+
+        <section id="screen-result" class="hidden">
+          <div style="text-align:center">
+            <div class="score-big" id="scoreBig">0/30</div>
+            <div class="muted" id="scoreLine">เยี่ยมมาก! เก่งมากเลย 🎉</div>
+            <div style="margin-top:12px"><button class="btn" id="btnRetry">เริ่มใหม่อีกครั้ง</button></div>
+          </div>
+          <h3 style="margin-top:18px; color:var(--primary-dark)">เฉลยพร้อมคำอธิบาย</h3>
+          <div class="result-list" id="resultList"></div>
+
+          <h3 style="margin-top:24px; color:var(--primary-dark)">คลังความรู้: ตัวอย่างพืช 30 ชนิด</h3>
+          <p class="muted" style="margin-top:-6px">ทบทวนชื่อพืชและจำแนกใบเลี้ยงเดี่ยว/คู่ เพื่อรู้จักพืชมากขึ้น</p>
+          <div class="grid-know" id="knowGrid"></div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+<script>
+// ========= Question Bank (30 items) =========
+let QUESTIONS = [
+  // 10 ลักษณะพืช
+  {q:"เส้นใบขนานเป็นส่วนใหญ่", mono:true,  exp:"ใบเลี้ยงเดี่ยวมักมีเส้นใบขนาน (เช่น หญ้า/ข้าว)"},
+  {q:"ระบบรากฝอย (รากจำนวนมาก ขนาดใกล้เคียงกัน)", mono:true, exp:"ใบเลี้ยงเดี่ยวมักมีรากฝอย ส่วนใบเลี้ยงคู่มักมีรากแก้ว"},
+  {q:"จำนวนกลีบดอกมักเป็น 3 หรือเท่ากับ 3", mono:true,  exp:"โครงสร้างดอกของใบเลี้ยงเดี่ยวมักเป็น 3 หรือ 6"},
+  {q:"ท่อลำเลียงในลำต้นกระจายทั่ว ๆ ไม่เรียงเป็นวง", mono:true,  exp:"ใบเลี้ยงเดี่ยวท่อลำเลียงกระจัดกระจาย แยกวงเจริญชัดเจนไม่ได้"},
+  {q:"มีวงเจริญด้านข้าง (cambium) ทำให้โตด้านข้างเป็นไม้เนื้อแข็ง", mono:false, exp:"ใบเลี้ยงคู่จำนวนมากมีวงเจริญ ทำให้ลำต้นหนาขึ้นเป็นวงปี"},
+  {q:"เส้นใบแตกแขนงเป็นร่างแห", mono:false, exp:"ลักษณะเด่นของใบเลี้ยงคู่คือเส้นใบแบบร่างแห"},
+  {q:"ใบมี “กาบใบ” หุ้มโคนลำต้นเด่น", mono:true,  exp:"ใบเลี้ยงเดี่ยวหลายชนิด (เช่น หญ้า/ข้าว) มีโคนใบเป็นกาบหุ้ม"},
+  {q:"เมล็ดมีใบเลี้ยง 2 ใบ", mono:false, exp:"คำนิยามของใบเลี้ยงคู่ (dicot) คือมีใบเลี้ยงสองใบ"},
+  {q:"เมล็ดมีใบเลี้ยง 1 ใบ", mono:true,  exp:"คำนิยามของใบเลี้ยงเดี่ยว (monocot) คือมีใบเลี้ยงเดียว"},
+  {q:"ลำต้นมีข้อปล้องชัด รูปทรงคล้ายหญ้า", mono:true,  exp:"หญ้า/ไผ่ เป็นต้นแบบของใบเลี้ยงเดี่ยว ลำต้นเป็นข้อปล้องชัด"},
+
+  // 20 ตัวอย่างพืช
+  {q:"ข้าว (Oryza sativa)", mono:true,  exp:"วงศ์หญ้า (Poaceae) → ใบเลี้ยงเดี่ยว"},
+  {q:"ข้าวโพด (Zea mays)", mono:true,  exp:"วงศ์หญ้า (Poaceae) → ใบเลี้ยงเดี่ยว"},
+  {q:"กล้วย (Musa spp.)", mono:true,  exp:"วงศ์กล้วย (Musaceae) → ใบเลี้ยงเดี่ยว"},
+  {q:"มะพร้าว (Cocos nucifera)", mono:true,  exp:"วงศ์ปาล์ม (Arecaceae) → ใบเลี้ยงเดี่ยว"},
+  {q:"ไผ่ (Bambusa spp.)", mono:true,  exp:"วงศ์หญ้า → ใบเลี้ยงเดี่ยว"},
+  {q:"สับปะรด (Ananas comosus)", mono:true,  exp:"วงศ์สับปะรด (Bromeliaceae) → ใบเลี้ยงเดี่ยว"},
+  {q:"หัวหอม (Allium cepa)", mono:true,  exp:"วงศ์กระเทียม-หัวหอม (Amaryllidaceae) → ใบเลี้ยงเดี่ยว"},
+  {q:"กระเทียม (Allium sativum)", mono:true,  exp:"อยู่สกุล Allium เช่นเดียวกับหัวหอม → ใบเลี้ยงเดี่ยว"},
+  {q:"ว่านหางจระเข้ (Aloe vera)", mono:true,  exp:"วงศ์ Asphodelaceae → ใบเลี้ยงเดี่ยว"},
+  {q:"ขิง (Zingiber officinale)", mono:true,  exp:"วงศ์ขิงข่า (Zingiberaceae) → ใบเลี้ยงเดี่ยว"},
+
+  {q:"กุหลาบ (Rosa spp.)", mono:false, exp:"วงศ์ Rosaceae → ใบเลี้ยงคู่"},
+  {q:"ทานตะวัน (Helianthus annuus)", mono:false, exp:"วงศ์ Asteraceae → ใบเลี้ยงคู่"},
+  {q:"ถั่วเหลือง (Glycine max)", mono:false, exp:"วงศ์ถั่ว (Fabaceae) → ใบเลี้ยงคู่"},
+  {q:"มะเขือเทศ (Solanum lycopersicum)", mono:false, exp:"วงศ์ Solanaceae → ใบเลี้ยงคู่"},
+  {q:"ฟักทอง (Cucurbita spp.)", mono:false, exp:"วงศ์แตง (Cucurbitaceae) → ใบเลี้ยงคู่"},
+  {q:"แตงกวา (Cucumis sativus)", mono:false, exp:"วงศ์แตง → ใบเลี้ยงคู่"},
+  {q:"มันฝรั่ง (Solanum tuberosum)", mono:false, exp:"วงศ์ Solanaceae → ใบเลี้ยงคู่"},
+  {q:"มะม่วง (Mangifera indica)", mono:false, exp:"วงศ์ Anacardiaceae → ใบเลี้ยงคู่"},
+  {q:"กาแฟ (Coffea spp.)", mono:false, exp:"วงศ์ Rubiaceae → ใบเลี้ยงคู่"},
+  {q:"ผักกาดหอม (Lactuca sativa)", mono:false, exp:"วงศ์ Asteraceae → ใบเลี้ยงคู่"}
+];
+
+// -------- Utilities --------
+function shuffle(arr){
+  for(let i=arr.length-1;i>0;i--){
+    const r = Math.floor(Math.random()*(i+1));
+    [arr[i], arr[r]] = [arr[r], arr[i]];
+  }
+  return arr;
+}
+
+// Interleave mono/dico so no long runs (>2) and still random overall
+(function balanceAndShuffle(){
+  const mono = QUESTIONS.filter(q=>q.mono===true);
+  const dico = QUESTIONS.filter(q=>q.mono===false);
+  shuffle(mono); shuffle(dico);
+  const total = QUESTIONS.length;
+  const out = [];
+  let i=0,j=0, lastType=null, run=0;
+  while(out.length < total){
+    // choose which bucket: prefer the one with more remaining, but avoid >2 run
+    const remainMono = mono.length - i;
+    const remainDico = dico.length - j;
+    let pickMono;
+    if(lastType===true && run>=2) pickMono = false;      // force switch
+    else if(lastType===false && run>=2) pickMono = true; // force switch
+    else if(remainMono===0) pickMono = false;
+    else if(remainDico===0) pickMono = true;
+    else{
+      // weighted random by remaining
+      const totalRem = remainMono + remainDico;
+      pickMono = (Math.random()*totalRem) < remainMono;
+    }
+    if(pickMono){
+      out.push(mono[i++]); 
+      if(lastType===true) run++; else { lastType=true; run=1; }
+    }else{
+      out.push(dico[j++]);
+      if(lastType===false) run++; else { lastType=false; run=1; }
+    }
+  }
+  QUESTIONS = out;
+})();
+
+// Assign left/right answer positions ONCE (balanced overall, unpredictable per load)
+(function assignBinaryPositionsOnce(){
+  const n = QUESTIONS.length;
+  let positions = [];
+  while(positions.length < n){ positions = positions.concat([0,1]); } // 0-left, 1-right
+  positions = positions.slice(0, n);
+  shuffle(positions);
+  for(let i=0;i<n;i++){
+    const q = QUESTIONS[i];
+    const target = positions[i];
+    const optMono = "ใบเลี้ยงเดี่ยว";
+    const optDico = "ใบเลี้ยงคู่";
+    if(q.mono){
+      q._opts = (target===0)? [optMono,optDico]:[optDico,optMono];
+      q._ansIndex = (target===0)? 0:1;
+    }else{
+      q._opts = (target===0)? [optDico,optMono]:[optMono,optDico];
+      q._ansIndex = (target===0)? 0:1;
+    }
+  }
+})();
+
+let idx = 0;
+const total = QUESTIONS.length;
+const answers = new Array(total).fill(null);
+let playerName = "";
+
+const el = (id) => document.getElementById(id);
+
+function updateMeta(){
+  el("qIndexMeta").textContent = (document.getElementById("screen-quiz").classList.contains("hidden")) ? 0 : (idx+1);
+  el("qTotalMeta").textContent = total;
+  if(playerName){
+    el("playerNameMeta").textContent = "👤 " + playerName;
+    el("playerNameMeta").classList.remove("hidden");
+  }
+}
+
+function renderQuestion(){
+  const q = QUESTIONS[idx];
+  const wrap = el("optWrap");
+  el("pillIdx").textContent = `ข้อ ${idx+1}/${total}`;
+  el("qText").textContent = q.q;
+
+  wrap.innerHTML = "";
+  q._opts.forEach((text, i)=>{
+    const id = `opt_${idx}_${i}`;
+    const row = document.createElement("label");
+    row.className = "opt";
+    row.innerHTML = `<input type="radio" name="q${idx}" id="${id}" ${answers[idx]===i? 'checked':''}>
+                     <span class="letter">${String.fromCharCode(65+i)})</span>
+                     <span>${text}</span>`;
+    row.querySelector("input").addEventListener("change",()=>{ answers[idx]=i; });
+    wrap.appendChild(row);
+  });
+  const ratio = (idx)/total;
+  el("progressBar").style.width = `${Math.max(0, Math.min(100, Math.floor(ratio*100)))}%`;
+  el("btnPrev").disabled = (idx===0);
+  el("btnNext").textContent = (idx === total-1) ? "ไปหน้าสรุป ➜" : "ข้อต่อไป ➡";
+  el("btnFinish").classList.toggle("hidden", idx !== total-1);
+  updateMeta();
+}
+
+function show(sectionId){
+  ["screen-start","screen-quiz","screen-result"].forEach(id=> el(id).classList.add("hidden"));
+  el(sectionId).classList.remove("hidden");
+  updateMeta();
+}
+
+function calcScore(){
+  let score = 0;
+  const rows = [];
+  QUESTIONS.forEach((q,i)=>{
+    const correct = q._ansIndex;
+    const user = answers[i];
+    const ok = (user===correct);
+    if(ok) score++;
+    rows.push({i, ok, user, correct});
+  });
+  return {score, rows};
+}
+
+function makeResult(){
+  const {score, rows} = calcScore();
+  el("scoreBig").textContent = `${score}/${total}`;
+  el("scoreLine").textContent = score >= Math.ceil(total*0.7) ? "ยอดเยี่ยมเลย! ผ่านเกณฑ์ 🏆" : "สู้ต่ออีกนิด ใกล้สำเร็จแล้ว 💪";
+  const list = el("resultList");
+  list.innerHTML = "";
+  rows.forEach(({i, ok, user, correct})=>{
+    const q = QUESTIONS[i];
+    const item = document.createElement("div");
+    item.className = "result-item " + (ok? "ok": "");
+    const ua = user!=null ? `${String.fromCharCode(65+user)}) ${q._opts[user]}` : "— ยังไม่เลือก —";
+    const ca = `${String.fromCharCode(65+correct)}) ${q._opts[correct]}`;
+    const explain = q.exp || (q.mono ? "พืชนี้จัดเป็นใบเลี้ยงเดี่ยว" : "พืชนี้จัดเป็นใบเลี้ยงคู่");
+    item.innerHTML = `
+      <div class="item-head">
+        <div><strong>ข้อ ${i+1}.</strong> ${q.q}</div>
+        <div class="pill" style="border-color:${ok?'#bbf7d0':'#fecaca'}; background:${ok?'#f0fdf4':'#fff1f2'}; color:${ok?'#166534':'#991b1b'}">${ok? "✔ ถูกต้อง": "✘ ไม่ถูก"}</div>
+      </div>
+      <div class="answer-line"><strong>คำตอบของคุณ:</strong> ${ua}</div>
+      <div class="answer-line"><strong>คำตอบที่ถูก:</strong> ${ca}</div>
+      <div class="explain">${explain}</div>
+    `;
+    list.appendChild(item);
+  });
+
+  // Knowledge grid
+  const KNOW = [
+    // Monocots (15)
+    {name:"ข้าว", mono:true}, {name:"ข้าวโพด", mono:true}, {name:"ไผ่", mono:true},
+    {name:"กล้วย", mono:true}, {name:"มะพร้าว", mono:true}, {name:"สับปะรด", mono:true},
+    {name:"หัวหอม", mono:true}, {name:"กระเทียม", mono:true}, {name:"ว่านหางจระเข้", mono:true},
+    {name:"ขิง", mono:true}, {name:"เผือก", mono:true}, {name:"กก", mono:true},
+    {name:"กล้วยไม้", mono:true}, {name:"ข้าวสาลี", mono:true}, {name:"หญ้าแพรก", mono:true},
+    // Dicots (15)
+    {name:"กุหลาบ", mono:false}, {name:"ทานตะวัน", mono:false}, {name:"ถั่วเหลือง", mono:false},
+    {name:"มะเขือเทศ", mono:false}, {name:"ฟักทอง", mono:false}, {name:"แตงกวา", mono:false},
+    {name:"มันฝรั่ง", mono:false}, {name:"มะม่วง", mono:false}, {name:"กาแฟ", mono:false},
+    {name:"ผักกาดหอม", mono:false}, {name:"พริก", mono:false}, {name:"คะน้า", mono:false},
+    {name:"มะนาว", mono:false}, {name:"ชบา", mono:false}, {name:"ผักชี", mono:false}
+  ];
+  const grid = document.getElementById("knowGrid");
+  grid.innerHTML = "";
+  KNOW.forEach(x=>{
+    const chip = document.createElement("div");
+    chip.className = "chip " + (x.mono ? "":"dico");
+    chip.innerHTML = `<span>${x.name}</span><span>${x.mono? "เดี่ยว":"คู่"}</span>`;
+    grid.appendChild(chip);
+  });
+}
+
+// events
+document.getElementById("btnStart").addEventListener("click", ()=>{
+  playerName = (el("playerName").value || "").trim();
+  if(!playerName){ alert("กรุณากรอกชื่อก่อนเริ่มทำแบบทดสอบ"); return; }
+  show("screen-quiz");
+  idx = 0; renderQuestion();
+});
+document.getElementById("btnPrev").addEventListener("click", ()=>{ if(idx>0){ idx--; renderQuestion(); }});
+document.getElementById("btnNext").addEventListener("click", ()=>{
+  if(answers[idx]==null){ if(!confirm("ยังไม่ได้เลือกคำตอบ ต้องการข้ามไปก่อนหรือไม่?")) return; }
+  if(idx < total-1){ idx++; renderQuestion(); }
+  else{ show("screen-result"); makeResult(); }
+});
+document.getElementById("btnFinish").addEventListener("click", ()=>{ show("screen-result"); makeResult(); });
+document.getElementById("btnSave").addEventListener("click", ()=>{
+  if(answers[idx]==null){ alert("กรุณาเลือกคำตอบก่อนบันทึก"); return; }
+  const btn = el("btnSave"); const old = btn.textContent; btn.textContent = "✅ บันทึกแล้ว"; setTimeout(()=>btn.textContent=old, 900);
+});
+document.getElementById("btnRetry").addEventListener("click", ()=>{
+  answers.fill(null); idx = 0; show("screen-start"); el("playerName").value=""; el("playerNameMeta").classList.add("hidden"); el("progressBar").style.width="0%";
+});
+// init
+el("qTotalMeta").textContent = QUESTIONS.length; updateMeta();
+</script>
+</body>
+</html>
